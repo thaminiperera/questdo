@@ -29,6 +29,23 @@
   letter-spacing: 1px;
 }
 
+.navbar-menu button {
+  background-color: #2d2d30;
+  color: #f0ebe3;
+  outline: none;
+  padding: 8px 12px;
+  border: 1px solid #f0ebe3;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 /*NAMEBAR*/
 .namebar-container {
   color: #f0ebe3;
@@ -84,4 +101,26 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.taskitem-container {
+  border: 1px solid #f0ebe3;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.taskitem-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px 10px 20px;
+  font-family: Montserrat;
+  letter-spacing: 1px;
+  font-size: 18px;
+}
+
+.taskitem-symbols {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

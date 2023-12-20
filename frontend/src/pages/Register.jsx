@@ -35,7 +35,7 @@ function Register() {
       navigate("/login");
     } else dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
-
+  console.log(user);
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
