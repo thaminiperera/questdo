@@ -31,7 +31,7 @@ const setTask = asyncHandler(async (req, res) => {
 const updateTask = asyncHandler(async (req, res) => {
   const task = await Task.findById(req.params.id);
 
-  if (!goal) {
+  if (!task) {
     res.status(400);
     throw new Error("Task not found");
   }
@@ -43,16 +43,16 @@ const updateTask = asyncHandler(async (req, res) => {
   }
 
   //--Verify User
-  if (task.user.toString() !== req.user._id) {
+  if (task.user.toString() !== req.user.id) {
     res.status(401);
-    throw new Error("User nor authorized");
+    throw new Error("User not authorized");
   }
 
-  const updatedTask = await Task.findByIdAndUpdate(req.params.id, req, body, {
+  const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
 
-  res.status(200).json(updateTask);
+  res.status(200).json(updatedTask);
 });
 
 //-------- (4)
@@ -60,7 +60,7 @@ const updateTask = asyncHandler(async (req, res) => {
 const deleteTask = asyncHandler(async (req, res) => {
   const task = await Task.findById(req.params.id);
 
-  if (!goal) {
+  if (!task) {
     res.status(400);
     throw new Error("Task not found");
   }
@@ -72,12 +72,12 @@ const deleteTask = asyncHandler(async (req, res) => {
   }
 
   //--Verify User
-  if (task.user.toString() !== req.user._id) {
+  if (task.user.toString() !== req.user.id) {
     res.status(401);
-    throw new Error("User nor authorized");
+    throw new Error("User not authorized");
   }
 
-  await task.remove();
+  await task.deleteOne();
 
   res.status(200).json({ id: req.params.id });
 });

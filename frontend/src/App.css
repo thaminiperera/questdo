@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+.reg-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #2d2d30;
+  color: #f0ebe3;
+}
+
+.reg-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 70px;
+}
+
+.reg-title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 50px;
+}
+
+.main-title {
+  font-family: Arapey;
+  font-size: 56px;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 900;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 500px;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form input {
+  padding: 5px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid gray;
+  background-color: #2d2d30;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+.form button {
+  padding: 10px;
+  color: #f0ebe3;
+  background-color: #2d2d30;
+  border: 1px solid #f0ebe3;
+  border-radius: 10px;
+}
+
+.form-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  color: #f0ebe3;
+  text-decoration: none;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.form-bottom span p {
+  color: #f0ebe3;
+  text-decoration: underline #f0ebe3;
+}

@@ -4,6 +4,7 @@ const connectDB = require("./config/db.js");
 const userRoutes = require("./routes/userRoutes.js");
 const taskRoutes = require("./routes/taskRoutes.js");
 const { errorHandler } = require("./middleware/errorMiddleware.js");
+const cors = require("cors");
 
 //express app
 const app = express();
@@ -13,6 +14,7 @@ dotenv.config();
 connectDB();
 
 //middlewares
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

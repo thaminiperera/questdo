@@ -6,10 +6,10 @@ const bcrypt = require("bcryptjs");
 // ------- (1)
 //Register User - POST (/api/users/register)
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   //--Check all fields have data
-  if (!name || !email || !password) {
+  if (!username || !email || !password) {
     res.status(400);
     throw new Error("Please add all fields.");
   }
@@ -27,16 +27,18 @@ const registerUser = asyncHandler(async (req, res) => {
 
   //--Create the User
   const user = await User.create({
-    name,
+    username,
     email,
     password: hashedPassword,
+    points: 0,
   });
 
   if (user) {
     res.status(201).json({
-      _id: user._id,
-      name: user.name,
+      _id: user.id,
+      username: user.username,
       email: user.email,
+      points: user.points,
       token: generateToken(user._id),
     });
   } else {
@@ -55,9 +57,10 @@ const loginUser = asyncHandler(async (req, res) => {
 
   if (user && (await bcrypt.compare(password, user.password))) {
     res.json({
-      _id: user._id,
-      name: user.name,
+      _id: user.id,
+      username: user.username,
       email: user.email,
+      points: user.points,
       token: generateToken(user._id),
     });
   } else {
