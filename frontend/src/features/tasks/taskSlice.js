@@ -47,6 +47,24 @@ export const getTasks = createAsyncThunk(
   }
 );
 
+//Update Task
+export const updateTask = createAsyncThunk(
+  "/api/tasks/update",
+  async (taskUpdate, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await taskService.updateTask(taskUpdate, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 // Delete user task
 export const deleteTask = createAsyncThunk(
   "/api/tasks/delete",
@@ -83,6 +101,22 @@ export const taskSlice = createSlice({
         state.tasks.push(action.payload);
       })
       .addCase(createTask.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateTask.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateTask.fulfilled, (state, action) => {
+        const updatedTaskIndex = state.tasks.findIndex(
+          (task) => task._id === action.payload._id
+        );
+        state.tasks[updatedTaskIndex] = action.payload;
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(updateTask.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -54,7 +54,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 20px 50px;
 }
 
 .namebar-name {
@@ -107,6 +107,34 @@
   border: 1px solid #f0ebe3;
   border-radius: 10px;
   margin: 10px;
+  width: 50%;
+}
+
+.taskitem-container-bold {
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin: 10px;
+  width: 50%;
+  background: #000;
+}
+
+.bold {
+  text-decoration: line-through;
+}
+
+.taskitem-buttonbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.taskitem_button button {
+  padding: 10px;
+  color: #f0ebe3;
+  background-color: #2d2d30;
+  border: 1px solid #f0ebe3;
+  border-radius: 10px;
 }
 
 .taskitem-wrapper {
@@ -123,4 +151,80 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.taskitem-date {
+  text-decoration: none;
+  padding: 2px 20px;
+  color: gray;
+  align-items: center;
+  padding: 10px 10px 10px 20px;
+  font-family: Montserrat;
+  letter-spacing: 1px;
+  font-size: 18px;
+}
+/*ADD NEW TASK*/
+
+.newtask-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.newtask-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.newtask-form-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+}
+
+.newtask-form label {
+  font-family: Montserrat;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.newtask-form form {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newtask-form input {
+  padding: 5px;
+  outline: none;
+  border: none;
+  color: #f0ebe3;
+  font-size: 18px;
+  border-bottom: 1px solid gray;
+  background-color: #2d2d30;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+.newtask-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #2d2d30;
+  font-size: 24px;
+  font-weight: 900;
+  background-color: #f0ebe3;
+  border: 1px solid #f0ebe3;
+  border-radius: 100%;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+input::placeholder {
+  color: gray;
+  font-size: 18px;
 }

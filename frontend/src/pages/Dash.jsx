@@ -7,6 +7,7 @@ import Namebar from "../components/Namebar";
 import TaskItem from "../components/TaskItem";
 import "../App.css";
 import { getTasks, reset } from "../features/tasks/taskSlice.js";
+import NewTask from "../components/NewTask.jsx";
 
 function Dash() {
   const navigate = useNavigate();
@@ -36,11 +37,14 @@ function Dash() {
   if (isLoading) {
     return <Spinner />;
   }
-  return (
+  console.log(user);
+  return user ? (
     <div className="reg-container">
       <Navbar />
-      <Namebar />
+      <Namebar key={user.id} username={user.username} points={user.points} />
+      <NewTask />
       <section className="content">
+        <h3>Your Tasks</h3>
         {tasks.length > 0 ? (
           <div className="tasks">
             {tasks.map((task) => (
@@ -52,6 +56,8 @@ function Dash() {
         )}
       </section>
     </div>
+  ) : (
+    navigate("/login")
   );
 }
 
