@@ -69,7 +69,32 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// ------- (3)
+// -------(3)
+// Update User - PUT (api/users/me)
+const updateMe = asyncHandler(async (req, res) => {
+  const { points } = req.body;
+
+  // Get the current user from the request
+  const user = req.user;
+
+  // Update user fields if provided in the request body
+
+  if (points) {
+    user.points = points;
+  }
+
+  // Save the updated user to the database
+  await User.findByIdAndUpdate(user.id, { points: points });
+  res.status(200).json({
+    _id: user.id,
+    username: user.username,
+    email: user.email,
+    points: user.points,
+    token: generateToken(user._id),
+  });
+});
+
+// ------- (4)
 //Get User Info - GET (api/users/me)
 const getMe = asyncHandler(async (req, res) => {
   res.status(200).json(req.user);
@@ -86,4 +111,5 @@ module.exports = {
   registerUser,
   loginUser,
   getMe,
+  updateMe,
 };

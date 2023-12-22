@@ -43,18 +43,20 @@ function Dash() {
       <Navbar />
       <Namebar key={user.id} username={user.username} points={user.points} />
       <NewTask />
-      <section className="content">
-        <h3>Your Tasks</h3>
-        {tasks.length > 0 ? (
-          <div className="tasks">
-            {tasks.map((task) => (
-              <TaskItem key={task._id} task={task} />
-            ))}
-          </div>
-        ) : (
-          <h3>You have not set any tasks</h3>
-        )}
-      </section>
+      <h3 className="context-title">Your Tasks</h3>
+      <div className="section-tiles">
+        <section className="content">
+          {tasks.length > 0 ? (
+            <div className="tasks">
+              {tasks.map((task) => (
+                <TaskItem key={task._id} task={task} />
+              ))}
+            </div>
+          ) : (
+            <p className="small">You have not set any tasks</p>
+          )}
+        </section>
+      </div>
     </div>
   ) : (
     navigate("/login")

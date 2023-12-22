@@ -3,7 +3,6 @@ import authService from "./authService";
 
 // Get user from localStorage
 const user = JSON.parse(localStorage.getItem("user"));
-console.log(`user: ${user}`);
 
 const initialState = {
   user: user ? user : null,
@@ -35,8 +34,27 @@ export const login = createAsyncThunk(
   "/api/auth/login",
   async (user, thunkAPI) => {
     try {
-      console.log(`login user: ${user}`);
       return await authService.login(user);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//Update User
+export const updateUser = createAsyncThunk(
+  "/api/auth/update",
+  async (userUpdate, thunkAPI) => {
+    try {
+      console.log(userUpdate);
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.updateUser(userUpdate, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -90,6 +108,26 @@ export const authSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(login.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        const newpoints = action.payload.points;
+        console.log(action);
+        state.user = {
+          ...state.user,
+          points: newpoints,
+        };
+      })
+
+      .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

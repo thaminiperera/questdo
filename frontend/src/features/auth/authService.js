@@ -23,6 +23,28 @@ const login = async (userData) => {
   return response.data;
 };
 
+//Update User
+const updateUser = async (userUpdate, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  userUpdate = { points: userUpdate };
+  const response = await axios.put(API_URL + "meu", userUpdate, config);
+  console.log(response.data);
+  if (response.data) {
+    // Update the local storage with the updated user data
+    const updatedUser = {
+      ...JSON.parse(localStorage.getItem("user")),
+      ...response.data,
+    };
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  }
+
+  return response.data;
+};
+
 // Logout user
 const logout = () => {
   localStorage.removeItem("user");
@@ -32,6 +54,7 @@ const authService = {
   register,
   logout,
   login,
+  updateUser,
 };
 
 export default authService;

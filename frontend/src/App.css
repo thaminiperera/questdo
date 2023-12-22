@@ -1,4 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 3px; /* Set the width of the scrollbar */
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fff; /* Set the color of the scrollbar thumb */
+  border-radius: 3px; /* Set the border-radius of the scrollbar thumb */
+}
 ::placeholder {
   color: gray;
   font-size: 12px;
@@ -66,6 +77,7 @@
 }
 
 .form button {
+  cursor: pointer;
   padding: 10px;
   color: #f0ebe3;
   background-color: #2d2d30;
@@ -93,6 +105,15 @@ input::placeholder {
   font-size: 18px;
 }
 
+.content {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 .content h3 {
   display: flex;
   padding: 20px 50px;
@@ -102,4 +123,39 @@ input::placeholder {
   font-size: 30px;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.small {
+  font-size: 24px;
+  font-weight: 200;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.context-title {
+  padding: 20px 70px;
+  font-weight: 500;
+  color: #f0ebe3;
+  font-family: Montserrat;
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-tiles {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tasks {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100vw;
+  height: 45vh;
 }
