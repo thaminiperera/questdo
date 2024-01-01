@@ -13,21 +13,17 @@ function TaskItem({ task }) {
   console.log(points);
 
   const handleUpdate = () => {
-    setTaskUpdate((prevTaskUpdate) => ({
-      ...prevTaskUpdate,
-      completed: !prevTaskUpdate.completed,
-    }));
+    setTaskUpdate((prev) => ({ ...prev, completed: !prev.completed }));
     // Check if the task is completed and update points
-    if (!task.completed) {
-      const updatedPoints = points + 10;
 
-      // Dispatch the updateUser action with the updated points as payload
-      dispatch(updateUser(updatedPoints));
-      console.log(updatedPoints);
+    const updatedPoints = !taskUpdate.completed ? points + 10 : points - 10;
 
-      // Update the local state (optional)
-      setPoints(updatedPoints);
-    }
+    // Dispatch the updateUser action with the updated points as payload
+    dispatch(updateUser(updatedPoints));
+    console.log(updatedPoints);
+
+    // Update the local state (optional)
+    setPoints(updatedPoints);
 
     setTaskUpdate((updatedTask) => {
       dispatch(updateTask(updatedTask));

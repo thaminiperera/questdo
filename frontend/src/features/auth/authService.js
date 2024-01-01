@@ -50,6 +50,13 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
+//View User Profile
+const profile = async () => {
+  const response = await axios.get(API_URL + "me");
+  console.log(response.data);
+  return response.data;
+};
+
 const authService = {
   register,
   logout,

@@ -12,6 +12,7 @@
 }
 
 .navbar-logo {
+  cursor: pointer;
   font-family: Arapey;
   font-size: 24px;
   font-weight: 700;

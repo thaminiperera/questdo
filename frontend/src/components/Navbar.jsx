@@ -19,9 +19,18 @@ function Navbar() {
     dispatch(reset());
     navigate("/login");
   };
+
+  const profilePage = () => {
+    navigate("/profile");
+  };
+
+  const onDash = () => {
+    navigate("/dash");
+  };
+
   return (
     <div className="navbar-container">
-      <div className="navbar-logo">
+      <div className="navbar-logo" onClick={onDash}>
         <p>QuestDo</p>
       </div>
       <div className="navbar-menu">
@@ -31,7 +40,10 @@ function Navbar() {
             <button onClick={onLogout}>Logout</button>
           </li>
           <li>
-            <AccountCircleIcon sx={{ color: lightBlue[80] }} />
+            <AccountCircleIcon
+              sx={{ color: lightBlue[80] }}
+              onClick={profilePage}
+            />
           </li>
         </ul>
       </div>
