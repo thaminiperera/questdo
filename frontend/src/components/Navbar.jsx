@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import store from "../app/store.js";
 
+//To be implemented - Leader Board
+
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -35,7 +37,6 @@ function Navbar() {
       </div>
       <div className="navbar-menu">
         <ul>
-          <li>Leader Board</li>
           <li>
             <button onClick={onLogout}>Logout</button>
           </li>

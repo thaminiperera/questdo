@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8800/api/tasks/";
+const API_URL = "/api/tasks/";
 
 //Create new Task
 const createTask = async (taskData, token) => {
