@@ -1,16 +1,11 @@
 {
-  "version": 2,
-  "builds": [
+  "buildCommand": "cd frontend && yarn install && npm run build",
+  "outputDirectory": "frontend/build",
+  "frameworks": "other",
+  "rewrites": [
     {
-      "src": "*.js",
-      "use": "@vercel/node"
-    }
-  ],
-
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/"
+      "source": "/api/(.*)",
+      "destination": "/backend/index.js"
     }
   ]
 }
