@@ -1,7 +1,6 @@
 {
   "buildCommand": "cd frontend && yarn install && npm run build",
   "outputDirectory": "frontend/build",
-  "frameworks": "other",
   "rewrites": [
     {
       "source": "/api/(.*)",
